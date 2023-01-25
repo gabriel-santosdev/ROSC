@@ -21,6 +21,22 @@
       "cost": 0,
       "services": [],
       "id": 2
+    },
+    {
+      "cost": 0,
+      "services": [],
+      "id": 3
+    },
+    {
+      "name": "projeto 1",
+      "budget": "50",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 4
     }
   ],
   "categories": [
