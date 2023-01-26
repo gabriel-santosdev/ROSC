@@ -23,20 +23,15 @@
       "id": 2
     },
     {
-      "cost": 0,
-      "services": [],
-      "id": 3
-    },
-    {
-      "name": "projeto 1",
-      "budget": "50",
+      "name": "projeto teste",
+      "budget": "10000",
       "category": {
-        "id": "3",
-        "name": "Design"
+        "id": "4",
+        "name": "Planejamento"
       },
       "cost": 0,
       "services": [],
-      "id": 4
+      "id": 3
     }
   ],
   "categories": [
