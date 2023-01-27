@@ -21,8 +21,8 @@ function Project(){
         const [services, setServices] = useState([])
         const [showProjectForm, setShowProjectForm]= useState(false)
         const [showServiceForm, setShowServiceForm]= useState(false)
-        const [message, setMesage] = useState()
-        const [type, setType] = useState()
+        const [message, setMessage] = useState('')
+        const [type, setType] = useState('success')
 
         useEffect(() =>  {
            setTimeout(() => {
@@ -42,12 +42,12 @@ function Project(){
 
         function editPost(project) {
            
-           setMesage('')
+           setMessage('')
             //budget validation
 
             if(project.budget < project.cost) {
                 
-                setMesage('O orçamento não pode ser menor que o custo do projeto!')
+                setMessage('O orçamento não pode ser menor que o custo do projeto!')
                 setType('error')
                 return false
     
@@ -65,7 +65,7 @@ function Project(){
 
                 setProject(data)
                 setShowProjectForm(false)
-                setMesage('Projeto atualizado!')
+                setMessage('Projeto atualizado!')
                 setType('success')
 
             })
@@ -73,7 +73,7 @@ function Project(){
         }
         
         function createService(project){
-            setMesage('')
+            setMessage('')
             //last service
             const lastService = project.services[project.services.length -1]
             lastService.id = uuidv4()
@@ -83,7 +83,7 @@ function Project(){
             
             //maximum value validation
             if (newCost > parseFloat(project.budget)) {
-                setMesage('Orçamento ultrapssado, verifique o valor do serviço')
+                setMessage('Orçamento ultrapassado, verifique o valor do serviço')
                 setType('error')
                 project.services.pop()
                 return false
@@ -118,7 +118,7 @@ function Project(){
             projectUpdated.services = servicesUpdated
             projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
 
-            fetch('http://localhost:5000/projects/${projectUpdated.id}', {
+            fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
                 method:'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ function Project(){
             .then((data) => {
                 setProject(projectUpdated)
                 setServices(servicesUpdated)
-                setMesage('Serviço removido com sucesso!')
+                setMessage('Serviço removido com sucesso!')
             })
             .catch(err => console.log(err))
 
